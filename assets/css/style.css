@@ -1,15 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100;700&family=Montserrat:wght@100;900&display=swap');
 
 body {
-    background-color:rgb(111, 178, 192);
+    background-color: rgb(111, 178, 192);
     color: rgb(16, 7, 65);
-    font-family: "montserrat", serif;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -18,18 +14,29 @@ body {
 .container {
     background-color: #111812;
     padding: 20px;
-    font-family: "Josefin Slab", serif;
+    margin-top: 200px;
+    font-family: 'Josefin Slab', serif;
     color: aliceblue;
-    border-radius: 40px;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgb(58, 39, 39);
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+}
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 50px;
 }
 
 input {
-    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
+    width: 70%;
 }
 
 button {
@@ -39,16 +46,46 @@ button {
     color: white;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
+    width: 30%;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-#current-weather, #forecast {
+.weather-info {
     margin-top: 20px;
 }
 
 .forecast-day {
     margin-bottom: 10px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.search-history {
+    margin-top: 20px;
+}
+
+.search-history button {
+    margin: 5px;
+    padding: 5px 10px;
+s    justify-content: left;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-history button:hover {
+    background-color: #0056b3;
 }
