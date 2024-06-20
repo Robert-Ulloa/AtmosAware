@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+body {
+    background-color:rgb(111, 178, 192);
+    color: rgb(16, 7, 65);
+    font-family: "montserrat", serif;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #111812;
+    padding: 20px;
+    font-family: "Josefin Slab", serif;
+    color: aliceblue;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgb(58, 39, 39);
+
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#current-weather, #forecast {
+    margin-top: 20px;
+}
+
+.forecast-day {
+    margin-bottom: 10px;
+}
