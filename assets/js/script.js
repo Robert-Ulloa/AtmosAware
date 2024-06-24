@@ -2,27 +2,29 @@ const apiKey = '712377fd43d6da24398f8076f733f79a';
 let searchHistory = [];
 
 function loadDefaultWeather() {
-    document.getElementById('cityInput').value = "London";
-    getWeather();
+    document.getElementById('cityInput').value = "";
+    getWeather('London');
 }
 
-function getWeather() {
-    const city = document.getElementById('cityInput').value;
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+function getWeather(city) {
+    const inputCity = city || document.getElementById('cityInput').value;
+    const unit = document.getElementById('unitSelect').value;
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&appid=${apiKey}&units=${unit}`;
 
     fetch(weatherUrl)
         .then(response => response.json())
         .then(data => {
             if (data.cod === "404") {
-                alert("City not found!");
+                showError("City not found!");
                 return;
             }
-            addToSearchHistory(city);
+            hideError();
+            addToSearchHistory(inputCity);
             displayWeather(data);
         })
         .catch(error => {
             console.error("Error fetching weather data:", error);
-            alert("Failed to fetch weather data. Please check your internet connection.");
+            showError("Failed to fetch weather data. Please check your internet connection.");
         });
 }
 
@@ -32,6 +34,9 @@ function displayWeather(data) {
 
     const forecastContainer = document.getElementById('forecast');
     forecastContainer.innerHTML = '';
+
+    const unit = document.getElementById('unitSelect').value;
+    const unitSymbol = unit === 'metric' ? '°C' : '°F';
 
     for (let i = 0; i < data.list.length; i += 8) {
         const dayData = data.list[i];
@@ -46,8 +51,8 @@ function displayWeather(data) {
         forecastDay.innerHTML = `
             <h3>${date}</h3>
             <img src="${weatherIcon}" class="weather-icon" alt="Weather icon">
-            <p>Min: ${tempMin.toFixed(1)}°C</p>
-            <p>Max: ${tempMax.toFixed(1)}°C</p>
+            <p>Min: ${tempMin.toFixed(1)}${unitSymbol}</p>
+            <p>Max: ${tempMax.toFixed(1)}${unitSymbol}</p>
         `;
 
         forecastContainer.appendChild(forecastDay);
@@ -73,4 +78,15 @@ function updateSearchHistory() {
         };
         historyContainer.appendChild(button);
     });
+}
+
+function showError(message) {
+    const errorContainer = document.getElementById('error-message');
+    errorContainer.textContent = message;
+    errorContainer.style.display = 'block';
+}
+
+function hideError() {
+    const errorContainer = document.getElementById('error-message');
+    errorContainer.style.display = 'none';
 }
